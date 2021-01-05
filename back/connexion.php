@@ -21,6 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<?php
+    // On écrit notre requête
+    $sql = 'SELECT * FROM user';
+
+    // On prépare la requête
+    $query = $connection->prepare($sql);
+
+    // On exécute la requête
+    $query->execute();
+
+    // On stocke le résultat dans un tableau associatif
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $produit){
+        echo $produit['email'];
+        echo $produit['mdp'];
+    }
+?>
+
 <form class="formcont" method="POST">
     <label> Email : </label>
     <input type="text" name="Login" placeholder="Mot de passe" maxlength="45">
