@@ -138,13 +138,12 @@ p{
     display: flex;
     flex-wrap: wrap;
     margin-top: 5rem;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .files{
-    height: 27vh;
-    width: 27vh;
+    height: 30vh;
+    width: 30vh;
     background-color: #fff;
     margin-top: 5rem;
-    margin: 2rem;
 }
