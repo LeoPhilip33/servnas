@@ -15,9 +15,6 @@
     require 'bdd.php';
     session_start();
 
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     // On écrit notre requête
     $sql = 'SELECT * FROM user';
 
@@ -35,6 +32,8 @@
         echo $produit['mdp'];
     }
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         $Login = $_POST['Login'];
         $Pass = $_POST['Pass'];
 
@@ -49,10 +48,6 @@
         }
     }
 ?>
-
-    <form class="formcont" method="POST">
-    <label> Email : </label>
-    <input type="text" name="Login" placeholder="Mot de passe" maxlength="45">
 
     <section class="form_container">
         <form class="w-25" method="POST">
