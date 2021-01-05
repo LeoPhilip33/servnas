@@ -11,12 +11,20 @@
     <section class="form_container">
         <form class="w-25" method="POST">
             <div class="form-group">
-                <label> Email : </label>
-                <input class="form-control" type="text" name="Login" placeholder="Mot de passe" maxlength="45">
+                <label for="nom"> Nom : </label>
+                <input class="form-control" id="nom" type="text" name="Nom" placeholder="Nom" maxlength="45">
             </div>
             <div class="form-group">
-                <label> Mot de passe : </label>
-                <input class="form-control" type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
+                <label for="prenom"> Prenom : </label>
+                <input class="form-control" id="prenom" type="text" name="Prenom" placeholder="Prenom" maxlength="45">
+            </div>
+            <div class="form-group">
+                <label for="email"> Email : </label>
+                <input class="form-control" id="email" type="text" name="Email" placeholder="Email" maxlength="45">
+            </div>
+            <div class="form-group">
+                <label for="mdp"> Mot de passe : </label>
+                <input class="form-control" id="mdp" type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
             </div>
             <button class="btn btn-green" type="envoyer" value="Envoyer"> Connexion </button>
         </form>
