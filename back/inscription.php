@@ -27,6 +27,7 @@
                 <input class="form-control" id="mdp" type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
             </div>
             <button class="btn btn-green" type="envoyer" value="Envoyer"> Inscription </button>
+            <a class="compte_link" href="connexion.php">Déjà un compte? Connectez-vous!</a>
         </form>
     </section>
 </body>
