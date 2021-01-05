@@ -34,6 +34,8 @@
                <div class="files"></div>
                <div class="files"></div>
                <div class="files"></div>
+               <div class="files"></div>
+               <div class="files"></div>
            </div>
        </div>
    </section>
