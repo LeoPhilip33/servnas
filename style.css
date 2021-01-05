@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
 :root{
     --black: #1f1f1f;
     --white: #f2ecff;
@@ -9,4 +12,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.first_container{
+    background-color: var(--black);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    color: var(--green);
+    font-family: 'Roboto', sans-serif;
+    font-size: 4rem;;
 }
