@@ -44,6 +44,7 @@
                 <input class="form-control" id="mdp" type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
             </div>
             <button class="btn btn-green" type="envoyer" value="Envoyer"> Connexion </button>
+            <a class="compte_link" href="connexion.php">Pas de compte? Inscrivez-vous!</a>
         </form>
     </section>
 </body>

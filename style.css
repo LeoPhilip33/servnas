@@ -79,8 +79,25 @@ p{
     color: var(--white)!important;
     font-size: 2rem!important;
     margin-top: 5rem;
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
 
 .form-control{
     font-size: 1.5rem!important;
+}
+
+.form_container form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.form_container form div{
+    width: 100%;
+}
+
+.compte_link{
+    font-size: 1.5rem;
+    margin-top: 2rem;
 }
