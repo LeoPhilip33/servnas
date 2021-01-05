@@ -23,10 +23,17 @@ header{
     position: fixed;
     width: 100%;
     height: 10vh;
-    background-color: #fff;
+    background-color: var(--black);
+    border-bottom: var(--green) 2px solid;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 2rem;
 }
 
 .first_container{
@@ -50,4 +57,26 @@ p{
     font-size: 2rem;
     padding-left: 5rem;
     padding-right: 5rem;
+}
+
+.form_container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--black);
+    font-size: 2rem;
+}
+
+.form_container label{
+    margin-top: 2rem;
+}
+
+.btn-green{
+    background-color: var(--green)!important;
+    color: var(--white)!important;
+    font-size: 2rem!important;
+    margin-top: 5rem;
 }
