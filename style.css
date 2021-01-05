@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 html{
@@ -25,10 +26,18 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 h1{
     color: var(--green);
-    font-family: 'Roboto', sans-serif;
-    font-size: 4rem;;
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
+
+p{
+    color: var(--white);
+    font-size: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
