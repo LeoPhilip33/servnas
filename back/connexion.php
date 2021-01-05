@@ -22,14 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <form class="formcont" method="POST">
-<label>
-Id :
-</label>
-<input type="text" name="Login" class="form-control" placeholder="Mot de passe" maxlength="45">
+    <label> Email : </label>
+    <input type="text" name="Login" placeholder="Mot de passe" maxlength="45">
 
-<label>
-Pass :
-</label>
-<input type="password" name="Pass" class="form-control" placeholder="Mot de passe" maxlength="45">
+    <label> Mot de passe : </label>
+    <input type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
 
-<button type="envoyer" value="Envoyer" >Connexion</button>
+    <button type="envoyer" value="Envoyer"> Connexion </button>
+</form>
