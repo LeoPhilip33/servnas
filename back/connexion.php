@@ -10,30 +10,30 @@
 <body>
 
 
-<?php
+    <?php
 
-require 'bdd.php';
-session_start();
+    require 'bdd.php';
+    session_start();
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $Login = $_POST['Login'];
-    $Pass = $_POST['Pass'];
+        $Login = $_POST['Login'];
+        $Pass = $_POST['Pass'];
 
-    if($Login == "ExoSlash" && $Pass == "Amandedu33" || $Login == "Pilmax" && $Pass == "Chatchien290901" ) {
-        echo "Le compte est bien identifié";
-        $_SESSION["Login"] = $Login;
-        header("location:admin.php");   
+        if($Login == "ExoSlash" && $Pass == "Amandedu33" || $Login == "Pilmax" && $Pass == "Chatchien290901" ) {
+            echo "Le compte est bien identifié";
+            $_SESSION["Login"] = $Login;
+            header("location:admin.php");   
+        }
+
+        else {
+            echo "Vous n'êtes pas connecté";     
+        }
     }
+    ?>
 
-    else {
-        echo "Vous n'êtes pas connecté";     
-    }
-}
-?>
-
-<section class="form_container">
+    <section class="form_container">
         <form class="w-25" method="POST">
             <div class="form-group">
                 <label for="email"> Email : </label>
@@ -46,3 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button class="btn btn-green" type="envoyer" value="Envoyer"> Connexion </button>
         </form>
     </section>
+</body>
+</html>
