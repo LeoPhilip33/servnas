@@ -10,11 +10,27 @@
 <body>
 
 
-    <?php
+<?php
 
     require 'bdd.php';
     session_start();
 
+    // On écrit notre requête
+    $sql = 'SELECT * FROM user';
+
+    // On prépare la requête
+    $query = $connection->prepare($sql);
+
+    // On exécute la requête
+    $query->execute();
+
+    // On stocke le résultat dans un tableau associatif
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $produit){
+        echo $produit['email'];
+        echo $produit['mdp'];
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -31,7 +47,7 @@
             echo "Vous n'êtes pas connecté";     
         }
     }
-    ?>
+?>
 
     <section class="form_container">
         <form class="w-25" method="POST">
