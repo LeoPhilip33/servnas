@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +8,43 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+
+        if(!empty($_POST["Inscription"])) {
+
+            require_once('bdd.php');
+
+            $prenom = $_POST['prenom'];
+            $nom = $_POST['nom'];
+            $email = $_POST['email'];
+            $mdp = $_POST['mdp'];
+
+            $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
+            $pdo_statement = $connection->prepare($sql);
+        
+            $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$_POST['mdp'] ));
+        }
+
+    ?>
     <section class="form_container">
         <form class="w-25" method="POST">
             <div class="form-group">
                 <label for="nom"> Nom : </label>
-                <input class="form-control" id="nom" type="text" name="Nom" placeholder="Nom" maxlength="45">
+                <input class="form-control" id="nom" type="text" name="nom" placeholder="Nom" maxlength="45">
             </div>
             <div class="form-group">
                 <label for="prenom"> Prenom : </label>
-                <input class="form-control" id="prenom" type="text" name="Prenom" placeholder="Prenom" maxlength="45">
+                <input class="form-control" id="prenom" type="text" name="prenom" placeholder="Prenom" maxlength="45">
             </div>
             <div class="form-group">
                 <label for="email"> Email : </label>
-                <input class="form-control" id="email" type="text" name="Email" placeholder="Email" maxlength="45">
+                <input class="form-control" id="email" type="text" name="email" placeholder="Email" maxlength="45">
             </div>
             <div class="form-group">
                 <label for="mdp"> Mot de passe : </label>
-                <input class="form-control" id="mdp" type="password" name="Pass" placeholder="Mot de passe" maxlength="45">
+                <input class="form-control" id="mdp" type="password" name="mdp" placeholder="Mot de passe" maxlength="45">
             </div>
-            <button class="btn btn-green" type="envoyer" value="Envoyer"> Inscription </button>
+            <button class="btn btn-green" type="envoyer" name="Inscription" value="Envoyer"> Inscription </button>
             <a class="compte_link" href="connexion.php">Déjà un compte? Connectez-vous!</a>
         </form>
     </section>
