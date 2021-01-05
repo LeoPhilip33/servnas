@@ -23,6 +23,8 @@
             $pdo_statement = $connection->prepare($sql);
         
             $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$_POST['mdp'] ));
+            
+            header("location:../dashboard.php");
         }
 
     ?>
