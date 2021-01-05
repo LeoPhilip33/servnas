@@ -101,3 +101,50 @@ p{
     font-size: 1.5rem;
     margin-top: 2rem;
 }
+
+
+
+/* DASHBOARD */
+
+.dashboard_container{
+    background-color: var(--black);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dashboard_title{
+    margin-top: 5rem;
+}
+
+.files_container{
+    width: 90%;
+    border: 2px solid var(--green);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.files_container h2{
+    text-align: center;
+    color: var(--white);
+    font-size: 2rem;
+    margin-top: 5rem;
+}
+
+.each_files_container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    justify-content: flex-start;
+}
+
+.files{
+    height: 27vh;
+    width: 27vh;
+    background-color: #fff;
+    margin-top: 5rem;
+    margin: 2rem;
+}
