@@ -36,7 +36,7 @@
         foreach($result as $produit){
             if($produit['email'] == $Email && $produit['mdp'] == $Pass) {
                 $_SESSION["email"] = $Email;
-                // header("location:admin.php");
+                header("location:../dashboard.php");
             }
             else{
                 
