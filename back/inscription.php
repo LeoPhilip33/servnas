@@ -24,6 +24,18 @@
             $code_secret_folder = substr($mdp, -10); // fait une coupure de 4 charactères
 
             mkdir("../upload/".$nom.".".$prenom."_".$code_secret_folder);
+
+            $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
+
+            $sql = <<<EOSQL
+            CREATE TABLE $creationVariable (
+                id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                nomfichier TEXT NOT NULL,
+                uniquename TEXT NOT NULL
+            ) ENGINE=InnoDB
+            EOSQL;
+
+            $res = $connection->exec($sql);
  
             $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
 
@@ -34,7 +46,7 @@
             session_start();
             $_SESSION["email"] = $email;
 
-            header("location:../dashboard.php");
+            //header("location:../dashboard.php");
         }
 
     ?>
