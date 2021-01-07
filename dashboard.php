@@ -10,16 +10,7 @@
 
 
 <?php
-
-    echo '<a href="uploadfile.php"> UploadFile </a>';
-
-
-    $str = 'apple';
-    $crypt = md5($str);
-    echo $crypt;
-
-
-   
+    echo '<a href="uploadfile.php"> UploadFile </a>';   
 ?>
 
    <section class="dashboard_container">
@@ -33,27 +24,27 @@
             <?php        
                 require 'back/bdd.php';
 
-                // On écrit notre requête
-                $sql = 'SELECT * FROM files';
+                session_start();
 
-                // On prépare la requête
-                $query = $connection->prepare($sql);
+                $email = $_SESSION["email"]; // Récupération de la personne actuellement connecté
 
-                // On exécute la requête
-                $query->execute();
+                $sql = "SELECT * FROM files WHERE email='$email'"; // Exploitation de la table "user" ou l'email est égale à l'email de l'utilisateur actuellement connecté.
 
-                // On stocke le résultat dans un tableau associatif
-                $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        
+                $query = $connection->prepare($sql); // On prépare la requête
+
+                $query->execute(); // On exécute la requête
+
+                $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
     
                 foreach($result as $produit){
-                    $emailUserBdd = $produit['email'];
-                    $nomFichierUserBdd = $produit['nomfichier'];
-                    $uniqueNameUserBdd = $produit['uniquename'];
-                    echo "<a href='upload' download='".$uniqueNameUserBdd."'> " . $nomFichierUserBdd." </a>";
+                    echo $produit['nomfichier'];
                     echo "<br>";
+                    
+                    // $nomFichierUserBdd = $produit['nomfichier'];
+                    // $uniqueNameUserBdd = $produit['uniquename'];
+                    // echo "<a href='upload' download='".$uniqueNameUserBdd."'> " . $nomFichierUserBdd." </a>";
                 }
-      
+    
             ?>
 
            </div>

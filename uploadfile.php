@@ -16,6 +16,10 @@
 
 <?php
 
+session_start();
+$email = $_SESSION["email"];
+echo $email;
+
 if (isset($_POST['submit'])) {
 
     $maxSize= 1000000000;
@@ -50,13 +54,7 @@ if (isset($_POST['submit'])) {
 
         require_once('back/bdd.php');
 
-        session_start();
-
         $nomfichier = $uniqueName;
-        
-        echo $uniqueName;
-
-        $email = $_SESSION["email"];
 
         $sql = "INSERT INTO files (email, nomfichier, uniquename) VALUES (:email, :nomfichier, :uniquename)";
 

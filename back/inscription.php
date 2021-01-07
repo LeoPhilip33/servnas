@@ -31,7 +31,7 @@
         
             $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
 
-            // header("location:../dashboard.php");
+            header("location:../dashboard.php");
         }
 
     ?>
