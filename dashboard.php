@@ -11,10 +11,13 @@
 
 <?php
 
-    require 'back/bdd.php';
-    session_start();
-
     echo '<a href="uploadfile.php"> UploadFile </a>';
+
+
+    $str = 'apple';
+    $crypt = md5($str);
+    echo $crypt;
+
 
    
 ?>
@@ -25,35 +28,34 @@
            <h2>Mes documents</h2>
 
            <div>
-           PHP En mode moche : 
+           PHP En mode moche :  <br>
 
-            <?php
-                $Email = $_POST['Email'];
-                $Pass = $_POST['Pass'];
-        
+            <?php        
+                require 'back/bdd.php';
+
                 // On écrit notre requête
-                $sql = 'SELECT * FROM user';
-        
+                $sql = 'SELECT * FROM files';
+
                 // On prépare la requête
                 $query = $connection->prepare($sql);
-        
+
                 // On exécute la requête
                 $query->execute();
-        
+
                 // On stocke le résultat dans un tableau associatif
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
         
+    
                 foreach($result as $produit){
-                    if($produit['email'] == $Email && $produit['mdp'] == $Pass) {
-                        $_SESSION["email"] = $Email;
-                        header("location:../dashboard.php");
-                    }
-                    else{
-                        
-                    }
+                    $emailUserBdd = $produit['email'];
+                    $nomFichierUserBdd = $produit['nomfichier'];
+                    $uniqueNameUserBdd = $produit['uniquename'];
+                    echo "<a href='upload' download='".$uniqueNameUserBdd."'> " . $nomFichierUserBdd." </a>";
+                    echo "<br>";
                 }
+      
             ?>
-            
+
            </div>
            <div class="each_files_container">
                <div class="files"></div>

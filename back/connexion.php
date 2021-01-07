@@ -15,7 +15,6 @@
     require 'bdd.php';
     session_start();
 
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $Email = $_POST['Email'];
@@ -34,7 +33,7 @@
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
         foreach($result as $produit){
-            if($produit['email'] == $Email && $produit['mdp'] == $Pass) {
+            if($produit['email'] == $Email && $produit['mdp'] == sha1($Pass)) {
                 $_SESSION["email"] = $Email;
                 header("location:../dashboard.php");
             }

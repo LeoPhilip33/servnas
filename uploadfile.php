@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
     echo $uniqueNameBdd;
 
-    $filename = "upload/" . $uniqueName;
+    $filename = "upload/" . $uniqueNameBdd;
 
     $resultat = move_uploaded_file($tmpName, $filename);
 

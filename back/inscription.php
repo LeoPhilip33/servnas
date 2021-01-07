@@ -17,15 +17,21 @@
             $prenom = $_POST['prenom'];
             $nom = $_POST['nom'];
             $email = $_POST['email'];
-            $mdp = $_POST['mdp'];
+            $UserMdp = $_POST['mdp']; //Récupération mdp
+
+            $mdp = sha1($UserMdp); // Hashage en md5 du mdp
+
+            $code_secret_folder = substr($mdp, -5); // fait une coupure de 4 charactères
+
+            mkdir("../upload/".$nom.".".$prenom."_".$code_secret_folder);
 
             $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
 
             $pdo_statement = $connection->prepare($sql);
         
-            $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$_POST['mdp'] ));
+            $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
 
-            header("location:../dashboard.php");
+            // header("location:../dashboard.php");
         }
 
     ?>
