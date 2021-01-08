@@ -37,7 +37,7 @@
             if ($leCompteExiste == "true") {
                 echo "Compte non créé car un compte est déja enregistré avec cette adresse email";
             } 
-            else {
+            elseif ($leCompteExiste == "none") {
                 echo "Compte créé";
                 $mdp = sha1($UserMdp); // Hashage en md5 du mdp
                 $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
@@ -63,7 +63,7 @@
                 $_SESSION["tableUser"] = $creationVariable;
                 $_SESSION["dossierUser"] = $dossierUser;
     
-                // header("location:../dashboard.php");
+                header("location:../dashboard.php");
             }
         }
 
@@ -72,19 +72,19 @@
         <form class="w-25" method="POST">
             <div class="form-group">
                 <label for="nom"> Nom : </label>
-                <input class="form-control" id="nom" type="text" name="nom" placeholder="Nom" maxlength="45">
+                <input class="form-control" id="nom" type="text" name="nom" placeholder="Nom" maxlength="45" required>
             </div>
             <div class="form-group">
                 <label for="prenom"> Prenom : </label>
-                <input class="form-control" id="prenom" type="text" name="prenom" placeholder="Prenom" maxlength="45">
+                <input class="form-control" id="prenom" type="text" name="prenom" placeholder="Prenom" maxlength="45" required>
             </div>
             <div class="form-group">
                 <label for="email"> Email : </label>
-                <input class="form-control" id="email" type="text" name="email" placeholder="Email" maxlength="45">
+                <input class="form-control" id="email" type="email" name="email" placeholder="Email" maxlength="45" required>
             </div>
             <div class="form-group">
                 <label for="mdp"> Mot de passe : </label>
-                <input class="form-control" id="mdp" type="password" name="mdp" placeholder="Mot de passe" maxlength="45">
+                <input class="form-control" id="mdp" type="password" name="mdp" placeholder="Mot de passe" maxlength="45" required>
             </div>
             <button class="btn btn-green" type="envoyer" name="Inscription" value="Envoyer"> Inscription </button>
             <a class="compte_link" href="connexion.php">Déjà un compte? Connectez-vous!</a>
