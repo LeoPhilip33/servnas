@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php
+        session_start();
+
+        $leCompteExiste = "none";
 
         if(!empty($_POST["Inscription"])) {
 
@@ -28,39 +31,40 @@
                 $emailUserBdd = $produit['email'];
 
                 if ($emailUserBdd == $email) {
-                    echo "Le compte existe déja connard <br>";
+                    $leCompteExiste = "true";
                 }
             }
-
-            if ($emailUserBdd != $email) {
-                echo "Ton compte est en cours de création gros PD <br>";
+            if ($leCompteExiste == "true") {
+                echo "Compte non créé car un compte est déja enregistré avec cette adresse email";
+            } 
+            else {
+                echo "Compte créé";
+                $mdp = sha1($UserMdp); // Hashage en md5 du mdp
+                $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
+    
+                $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
+                mkdir("../upload/".$dossierUser);
+    
+                $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
+                $sql = <<<EOSQL
+                CREATE TABLE $creationVariable (
+                    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    nomfichier TEXT NOT NULL
+                ) ENGINE=InnoDB
+                EOSQL;
+                $res = $connection->exec($sql);
+     
+                $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
+                $pdo_statement = $connection->prepare($sql);
+                $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
+    
+                
+                $_SESSION["email"] = $email;
+                $_SESSION["tableUser"] = $creationVariable;
+                $_SESSION["dossierUser"] = $dossierUser;
+    
+                // header("location:../dashboard.php");
             }
-
-            $mdp = sha1($UserMdp); // Hashage en md5 du mdp
-            $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
-
-            $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
-            mkdir("../upload/".$dossierUser);
-
-            $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
-            $sql = <<<EOSQL
-            CREATE TABLE $creationVariable (
-                id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                nomfichier TEXT NOT NULL
-            ) ENGINE=InnoDB
-            EOSQL;
-            $res = $connection->exec($sql);
- 
-            $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
-            $pdo_statement = $connection->prepare($sql);
-            $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
-
-            session_start();
-            $_SESSION["email"] = $email;
-            $_SESSION["tableUser"] = $creationVariable;
-            $_SESSION["dossierUser"] = $dossierUser;
-
-            header("location:../dashboard.php");
         }
 
     ?>
