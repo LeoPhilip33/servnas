@@ -19,34 +19,48 @@
             $email = $_POST['email'];
             $UserMdp = $_POST['mdp']; //Récupération mdp
 
+            $sql = "SELECT * FROM user";
+            $query = $connection->prepare($sql); // On prépare la requête
+            $query->execute(); // On exécute la requête
+            $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
+
+            foreach($result as $produit){
+                $emailUserBdd = $produit['email'];
+
+                if ($emailUserBdd == $email) {
+                    echo "Le compte existe déja connard <br>";
+                }
+            }
+
+            if ($emailUserBdd != $email) {
+                echo "Ton compte est en cours de création gros PD <br>";
+            }
+
             $mdp = sha1($UserMdp); // Hashage en md5 du mdp
+            $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
 
-            $code_secret_folder = substr($mdp, -10); // fait une coupure de 4 charactères
-
-            mkdir("../upload/".$nom.".".$prenom."_".$code_secret_folder);
+            $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
+            mkdir("../upload/".$dossierUser);
 
             $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
-
             $sql = <<<EOSQL
             CREATE TABLE $creationVariable (
                 id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                nomfichier TEXT NOT NULL,
-                uniquename TEXT NOT NULL
+                nomfichier TEXT NOT NULL
             ) ENGINE=InnoDB
             EOSQL;
-
             $res = $connection->exec($sql);
  
             $sql = "INSERT INTO user (prenom, nom, email, mdp) VALUES (:prenom, :nom, :email, :mdp)";
-
             $pdo_statement = $connection->prepare($sql);
-        
             $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
 
             session_start();
             $_SESSION["email"] = $email;
+            $_SESSION["tableUser"] = $creationVariable;
+            $_SESSION["dossierUser"] = $dossierUser;
 
-            //header("location:../dashboard.php");
+            header("location:../dashboard.php");
         }
 
     ?>

@@ -34,49 +34,21 @@ if (isset($_POST['submit'])) {
     }
 
     $filename = $_FILES['uploaded_file']['name'];
-
     $tmpName = $_FILES['uploaded_file']['tmp_name'];
 
-    $uniqueName = $filename;
-
-    $uniqueNameBdd = md5(uniqid(rand(), true));
-
     session_start();
-
     require_once('back/bdd.php');
+    $dossierUser = $_SESSION["dossierUser"];
+    $tableUser = $_SESSION["tableUser"];
 
-    $email = $_SESSION["email"];
-
-    $sql = "SELECT * FROM user WHERE email='$email'"; // Exploitation de la table "user" ou l'email est égale à l'email de l'utilisateur actuellement connecté.
-
-    $query = $connection->prepare($sql); // On prépare la requête
-
-    $query->execute(); // On exécute la requête
-
-    $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
-
-    foreach($result as $produit){
-        $prenom = $produit['prenom'];
-        $nom = $produit['nom'];
-        $mdp = $produit['mdp'];
-        echo "<br>";
-    }
-
-    $code_secret_folder = substr($mdp, -10); // Calcule du code secret utilisateur
-
-    $filename = "upload/".$nom.".".$prenom."_".$code_secret_folder."/". $filename;
-
-    $resultat = move_uploaded_file($tmpName, $filename);
+    $rechercheDossierClient = "upload/".$dossierUser."/". $filename; // On sauvegarde le fichier dans le dossier client
+    $resultat = move_uploaded_file($tmpName, $rechercheDossierClient); // On le déplace au bon endroit sur le serveur
 
     if ($resultat) {
-
-        $nomfichier = $uniqueName;
-
-        $sql = "INSERT INTO files (email, nomfichier, uniquename) VALUES (:email, :nomfichier, :uniquename)";
-
+        $nomfichier = $filename;
+        $sql = "INSERT INTO $tableUser (nomfichier) VALUES (:nomfichier)";
         $pdo_statement = $connection->prepare($sql);
-    
-        $result = $pdo_statement->execute(array( ':email'=>$email, ':nomfichier'=>$nomfichier, ':uniquename'=>$uniqueNameBdd ));
+        $result = $pdo_statement->execute(array( ':nomfichier'=>$nomfichier ));
 
         echo "Transfert terminé !";
     }

@@ -8,42 +8,43 @@
     <title> Connexion </title>
 </head>
 <body>
+    <?php
+        require 'bdd.php';
+        session_start();
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-<?php
+            $Email = $_POST['Email'];
+            $Pass = $_POST['Pass'];
 
-    require 'bdd.php';
-    session_start();
+            $sql = 'SELECT * FROM user'; // On écrit notre requête
+            $query = $connection->prepare($sql); // On prépare la requête
+            $query->execute(); // On exécute la requête
+            $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            foreach($result as $produit){
+                if($produit['email'] == $Email && $produit['mdp'] == sha1($Pass)) {
 
-        $Email = $_POST['Email'];
-        $Pass = $_POST['Pass'];
+                    $nom = $produit['nom'];
+                    $prenom = $produit['prenom'];
+                    $mdp = $produit['mdp'];
+                    $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
+                    $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
+                    $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
 
-        // On écrit notre requête
-        $sql = 'SELECT * FROM user';
+                    $_SESSION["email"] = $Email;
+                    $_SESSION["tableUser"] = $creationVariable;
+                    $_SESSION["dossierUser"] = $dossierUser;
 
-        // On prépare la requête
-        $query = $connection->prepare($sql);
-
-        // On exécute la requête
-        $query->execute();
-
-        // On stocke le résultat dans un tableau associatif
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach($result as $produit){
-            if($produit['email'] == $Email && $produit['mdp'] == sha1($Pass)) {
-                $_SESSION["email"] = $Email;
-                header("location:../dashboard.php");
-            }
-            else{
-                
+                    header("location:../dashboard.php");
+                }
+                else{
+                    echo "Auncun compte n'a été trouvé ! <a href='inscription.php'> M'inscrire </a>";
+                    break;
+                }
             }
         }
-
-    }
-?>
+    ?>
 
     <section class="form_container">
         <form class="w-25" method="POST">

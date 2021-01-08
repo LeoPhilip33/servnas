@@ -19,49 +19,26 @@
            <h2>Mes documents</h2>
 
            <div>
-           PHP En mode moche :  <br>
-           
+                PHP En mode moche :  <br>
 
-            <?php        
-                require 'back/bdd.php';
+                <?php        
+                    require 'back/bdd.php';
 
-                session_start();
+                    session_start();
 
-                $email = $_SESSION["email"]; // Récupération de la personne actuellement connecté
+                    $dossierUser = $_SESSION["dossierUser"];
+                    $tableUser = $_SESSION["tableUser"];
 
-
-                $sql = "SELECT * FROM user WHERE email='$email'"; // Exploitation de la table "user" ou l'email est égale à l'email de l'utilisateur actuellement connecté.
-
-                $query = $connection->prepare($sql); // On prépare la requête
-
-                $query->execute(); // On exécute la requête
-
-                $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
-    
-                foreach($result as $produit){
-                    $nomUserBdd = $produit['nom'];
-                    $prenomUserBdd = $produit['prenom'];
-                    $mdpUserBdd = $produit['mdp'];
-                }
-
-                $nomSubStr = substr($mdpUserBdd, -10); // Calcule du code secret utilisateur
-
-                $nomSubStrCheminFichier = $nomUserBdd.".".$prenomUserBdd."_".$nomSubStr;
-
-                $sql = "SELECT * FROM files WHERE email='$email'"; // Exploitation de la table "user" ou l'email est égale à l'email de l'utilisateur actuellement connecté.
-
-                $query = $connection->prepare($sql); // On prépare la requête
-
-                $query->execute(); // On exécute la requête
-
-                $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
-    
-                foreach($result as $produit){
-                    $nomFichier = $produit['nomfichier'];
-                    echo "<a href='upload/".$nomSubStrCheminFichier."/".$nomFichier."' download='".$nomFichier."'> " . $nomFichier." </a> <br>";
-                }
-
-            ?>
+                    $sql = "SELECT * FROM $tableUser";
+                    $query = $connection->prepare($sql); // On prépare la requête
+                    $query->execute(); // On exécute la requête
+                    $result = $query->fetchAll(PDO::FETCH_ASSOC); // On stocke le résultat dans un tableau associatif
+        
+                    foreach($result as $produit){
+                        $nomFichier = $produit['nomfichier'];
+                        echo "<a href='upload/".$dossierUser."/".$nomFichier."' download='".$nomFichier."'> " . $nomFichier." </a> <br>";
+                    }
+                ?>
 
            </div>
 
