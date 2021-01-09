@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php
+
+    require('../function/str_to_noaccent.php');
+
         session_start();
 
         $leCompteExiste = "none";
@@ -38,9 +41,13 @@
                 echo "Compte non créé car un compte est déja enregistré avec cette adresse email";
             } 
             elseif ($leCompteExiste == "none") {
-                echo "Compte créé";
+
                 $mdp = sha1($UserMdp); // Hashage en md5 du mdp
                 $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
+
+                $nom = str_to_noaccent($nom); // On enlève les accents
+                $prenom = str_to_noaccent($prenom); // On enlève les accents
+                
     
                 $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
                 mkdir("../upload/".$dossierUser);
