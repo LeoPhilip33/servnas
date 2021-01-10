@@ -10,7 +10,8 @@
 
 
 <?php
-    echo '<a href="uploadfile.php"> UploadFile </a>';   
+    echo '<a href="uploadfile.php"> UploadFile </a> <br>';
+    echo '<a href="profile.php"> Profile </a>';
 ?>
 
    <section class="dashboard_container">
@@ -22,12 +23,16 @@
                 PHP En mode moche :  <br>
 
                 <?php        
-                    require 'back/bdd.php';
-
                     session_start();
+
+                    if (!isset($_SESSION["email"])) {
+                        header('Location:connexion.php');
+                    }
 
                     $dossierUser = $_SESSION["dossierUser"];
                     $tableUser = $_SESSION["tableUser"];
+
+                    require 'back/bdd.php';
 
                     $sql = "SELECT * FROM $tableUser";
                     $query = $connection->prepare($sql); // On prépare la requête

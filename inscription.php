@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title> Inscription </title>
 </head>
 <body>
     <?php
+        session_start(); // On ferme toutes les sessions possible
+        session_destroy(); // On ferme toutes les sessions possible
 
-    require('../function/str_to_noaccent.php');
+        require('function/str_to_noaccent.php');
 
         session_start();
 
@@ -18,7 +20,7 @@
 
         if(!empty($_POST["Inscription"])) {
 
-            require_once('bdd.php');
+            require_once('back/bdd.php');
 
             $prenom = $_POST['prenom'];
             $nom = $_POST['nom'];
@@ -45,12 +47,15 @@
                 $mdp = sha1($UserMdp); // Hashage en md5 du mdp
                 $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
 
+                $_SESSION["nom"] = $nom; // On récupère le nom est prénom dans les session avant d'enlever les accents
+                $_SESSION["prenom"] = $prenom; // On récupère le nom est prénom dans les session avant d'enlever les accents
+
                 $nom = str_to_noaccent($nom); // On enlève les accents
                 $prenom = str_to_noaccent($prenom); // On enlève les accents
                 
     
                 $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
-                mkdir("../upload/".$dossierUser);
+                mkdir("upload/".$dossierUser);
     
                 $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
                 $sql = <<<EOSQL
@@ -65,12 +70,12 @@
                 $pdo_statement = $connection->prepare($sql);
                 $result = $pdo_statement->execute(array( ':prenom'=>$_POST['prenom'], ':nom'=>$_POST['nom'], ':email'=>$_POST['email'], ':mdp'=>$mdp ));
     
-                
+
                 $_SESSION["email"] = $email;
                 $_SESSION["tableUser"] = $creationVariable;
                 $_SESSION["dossierUser"] = $dossierUser;
     
-                header("location:../dashboard.php");
+                header("location:dashboard.php");
             }
         }
 

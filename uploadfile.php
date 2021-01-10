@@ -16,6 +16,12 @@
 
 <?php
 
+session_start();
+
+if (!isset($_SESSION["email"])) {
+    header('Location:connexion.php');
+}
+
 
 if (isset($_POST['submit'])) {
 
@@ -35,8 +41,7 @@ if (isset($_POST['submit'])) {
 
     $filename = $_FILES['uploaded_file']['name'];
     $tmpName = $_FILES['uploaded_file']['tmp_name'];
-
-    session_start();
+    
     require_once('back/bdd.php');
     $dossierUser = $_SESSION["dossierUser"];
     $tableUser = $_SESSION["tableUser"];

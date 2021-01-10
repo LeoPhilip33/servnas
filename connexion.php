@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title> Connexion </title>
 </head>
 <body>
     <?php
-        require 'bdd.php';
+        echo '<a href="inscription.php"> inscription </a>';
+
+        session_start(); // On ferme toutes les sessions possible
+        session_destroy(); // On ferme toutes les sessions possible
+        require 'back/bdd.php';
         session_start();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            require('function/str_to_noaccent.php');
 
             $Email = $_POST['Email'];
             $Pass = $_POST['Pass'];
@@ -29,14 +35,20 @@
                     $prenom = $produit['prenom'];
                     $mdp = $produit['mdp'];
                     $code_secret_folder = substr($mdp, -10); // fait une coupure de 10 charactères
+
+                    $nom = str_to_noaccent($nom); // On enlève les accents
+                    $prenom = str_to_noaccent($prenom); // On enlève les accents
+
                     $creationVariable = "tableuser_".$nom.$prenom.$code_secret_folder;
                     $dossierUser = $nom.".".$prenom."_".$code_secret_folder;
 
+                    $_SESSION["nom"] = $nom;
+                    $_SESSION["prenom"] = $prenom;
                     $_SESSION["email"] = $Email;
                     $_SESSION["tableUser"] = $creationVariable;
                     $_SESSION["dossierUser"] = $dossierUser;
 
-                    header("location:../dashboard.php");
+                    header("location:dashboard.php");
                 }
                 else{
                     echo "Auncun compte n'a été trouvé ! <a href='inscription.php'> M'inscrire </a>";
