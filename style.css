@@ -1,7 +1,10 @@
 :root {
-    --black: #1f1f1f;
-    --white: #f2ecff;
+    --black: #3F3D56;
+    --white: #FFFEFE;
+    --gray: #F1F1F1;
     --green: #00c896;
+    --blue: #0015A3;
+    --blue_btn: #576BF3;
 }
 
 html,
@@ -9,11 +12,310 @@ body {
     margin: 0;
 }
 
+h2 {
+    font-weight: normal;
+}
 
-/* background-color: var(--black); */
+
+/** navbar **/
+
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--gray);
+}
+
+.flex_btn_navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo_navbar {
+    width: 70px;
+}
+
+.logo_positions {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn_inscription_connexion {
+    background-color: var(--blue_btn);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: fit-content;
+}
+
+.reponsive_image_inscription {
+    margin-top: 20px;
+    width: 90%;
+}
+
+.a_unstyle_btn_connexion {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.btn_inscription_inscription {
+    background-color: white;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 7px;
+    border: 1px solid var(--black);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: fit-content;
+}
+
+.a_unstyle_btn_inscription {
+    color: var(--blue_btn);
+    text-decoration: none;
+}
+
+
+/** navbar **/
+
+
+/** Debut page inscription **/
+
+.label_inscription {
+    font-size: 17px;
+}
+
+.txt_compte_inscription {
+    font-size: 20px;
+}
+
+.max_width_txt_inscription {
+    font-size: 30px;
+    width: 650px;
+    text-align: center;
+}
 
 .zone_inscription {
     background: no-repeat url("img/inscription.png");
+    background-size: 75%;
     width: 100%;
     height: 100vh;
 }
+
+.container_creation {
+    background-color: var(--white);
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.delimitation_flex_inscription {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.inscription_h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 45px;
+}
+
+.couleur_txt_bleu {
+    color: var(--blue);
+}
+
+.input_inscription {
+    font-size: 17px;
+    border: 0px;
+    border-bottom: 1px solid var(--black);
+    width: 150px;
+    padding-bottom: 10px;
+}
+
+.btn_inscription {
+    background-color: var(--blue_btn);
+    color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 7px;
+    padding: 13px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.input_width_max {
+    width: 100%;
+}
+
+.flex_elements_inscription {
+    display: flex;
+    justify-content: space-between;
+}
+
+.a_unstyle_bleu_bold {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.emplacement_connexion {
+    background-color: var(--black);
+    padding: 1px;
+    text-align: center;
+    color: var(--white);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.a_unstyle_white_inscription {
+    color: var(--white);
+    font-weight: bold;
+}
+
+.max_width_formulaire_inscription {
+    max-width: 500px;
+}
+
+.espacement_generale_inscription {
+    margin-top: 30px;
+}
+
+.position_btn_inscription {
+    text-align: right;
+}
+
+.bold_txt {
+    font-weight: bold;
+}
+
+.btn_bottom_inscription {
+    margin-bottom: 20px;
+}
+
+.centrer_img_inscription {
+    display: flex;
+    justify-content: center;
+}
+
+
+/** Fin page inscription **/
+
+
+/** Debut page connexion **/
+
+.zone_connexion {
+    display: flex;
+    align-items: center;
+    background: no-repeat url(img/connexion.png);
+    background-position: top right;
+    background-size: 55%;
+    width: 100%;
+    height: 100vh;
+}
+
+.delim_zone_con {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.connexion_h1 {
+    font-weight: normal;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 45px;
+    font-size: 30px;
+    width: 650px;
+    text-align: center;
+}
+
+.reponsive_image_connexion {
+    margin-top: 20px;
+    width: 70%;
+}
+
+.connexiondesign {
+    background-color: var(--white);
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.max_width_connexion {
+    width: 100%;
+}
+
+.max_width_form_connexion {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max_width_input_connexion {
+    width: 100%;
+}
+
+.change_width_connexion {
+    width: 100%;
+}
+
+.connexion_title_modification {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+}
+
+.flex_MotDePasseOublie {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+}
+
+.centrage_verticale_mdp_oublie {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btn_align_gauche_connexion {
+    text-align: end;
+}
+
+.btn_connexion {
+    background-color: var(--blue_btn);
+    color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 7px;
+    padding: 13px;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.cadenas_width_connexion {
+    width: 25px;
+}
+
+.center_img_connexion {
+    display: flex;
+    justify-content: center;
+}
+
+
+/** Fin page connexion **/
