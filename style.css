@@ -1,149 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
-
-:root{
+:root {
     --black: #1f1f1f;
     --white: #f2ecff;
     --green: #00c896;
 }
 
-
-*{
+html,
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
-html{
-    font-size: 62.5%;
-}
 
-header{
-    position: fixed;
-    width: 100%;
-    height: 10vh;
-    background-color: var(--black);
-    border-bottom: var(--green) 2px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+/* background-color: var(--black); */
 
-header a {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 2rem;
-}
-
-.first_container{
-    background-color: var(--black);
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-h1{
-    color: var(--green);
-    font-size: 4rem;
-    margin-bottom: 4rem;
-}
-
-p{
-    color: var(--white);
-    font-size: 2rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-}
-
-.form_container{
-    display: flex;
+.zone_inscription {
+    background: no-repeat url("img/inscription.png");
     width: 100%;
     height: 100vh;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    background-color: var(--black);
-    font-size: 2rem;
-}
-
-.form_container label{
-    margin-top: 2rem;
-}
-
-.btn-green{
-    background-color: var(--green)!important;
-    color: var(--white)!important;
-    font-size: 2rem!important;
-    margin-top: 5rem;
-    margin-left: auto!important;
-    margin-right: auto!important;
-}
-
-.form-control{
-    font-size: 1.5rem!important;
-}
-
-.form_container form{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-.form_container form div{
-    width: 100%;
-}
-
-.compte_link{
-    font-size: 1.5rem;
-    margin-top: 2rem;
-}
-
-
-
-/* DASHBOARD */
-
-.dashboard_container{
-    background-color: var(--black);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.dashboard_title{
-    margin-top: 5rem;
-}
-
-.files_container{
-    width: 90%;
-    border: 2px solid var(--green);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.files_container h2{
-    text-align: center;
-    color: var(--white);
-    font-size: 2rem;
-    margin-top: 5rem;
-}
-
-.each_files_container{
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 5rem;
-    justify-content: space-between;
-}
-
-.files{
-    height: 30vh;
-    width: 30vh;
-    background-color: #fff;
-    margin-top: 5rem;
 }
