@@ -8,7 +8,9 @@
         <navbar>
             <div class="navbar">
                 <div class="logo_positions">
-                    <img class="logo_navbar" src="img/logo.png" alt="logo de Pcloud">
+                    <a href="index.php">
+                        <img class="logo_navbar" src="img/logo.png" alt="logo de Pcloud">
+                    </a>
                 </div>
 
                 <div class="flex_btn_navbar">

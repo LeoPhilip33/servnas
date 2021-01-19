@@ -5,6 +5,7 @@
     --green: #00c896;
     --blue: #0015A3;
     --blue_btn: #576BF3;
+    --orange: #FFA000;
 }
 
 html,
@@ -33,7 +34,8 @@ h2 {
 }
 
 .logo_navbar {
-    width: 70px;
+    width: 35px;
+    margin-left: 25px;
 }
 
 .logo_positions {
@@ -319,3 +321,271 @@ h2 {
 
 
 /** Fin page connexion **/
+
+
+/** DEBUT page accueil **/
+
+.alignement_sous_header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.padding_a_zone_sous_header {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.background_accueil {
+    padding-top: 90px;
+    background-color: var(--blue_btn);
+    height: 100vh;
+    width: 100%;
+}
+
+.gras_ph_accroche_accueil {
+    font-weight: bold;
+}
+
+.color_white_accueil {
+    margin-top: 150px;
+    text-align: center;
+    color: var(--white);
+}
+
+.txt_gras_accueil {
+    font-weight: bold;
+}
+
+.button_page_accueil {
+    margin-top: 25px;
+    color: var(--orange);
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 7px;
+    border: 0px solid;
+    font-weight: bold;
+}
+
+.margin_position_ordinateur {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.centrage_bouton_accueil {
+    display: flex;
+    justify-content: center;
+}
+
+.deuxieme_partie {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background: no-repeat url(img/bk_accueil_2.png);
+    background-position: left 0% bottom 50%;
+    background-size: 50%;
+}
+
+.color_white_deuxieme_partie_accueil {
+    color: var(--white);
+}
+
+.bold_compte_p_nas {
+    font-weight: bold;
+}
+
+.modification_txt_h2_deuxieme_partie_accueil {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.modfi_p_deux_part_accueil {
+    font-size: 25px;
+}
+
+.commencer_link_acceuil {
+    color: var(--orange);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.image_size_illustration_accueil_part2 {
+    width: 80%;
+}
+
+.delim_deuxiemepart {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.max_width_deuxieme_partie_accueil {
+    max-width: 600px;
+}
+
+.centrage_link_commencer {
+    text-align: center;
+}
+
+.troisieme_partie {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 100vh;
+    background: no-repeat url(img/bk_accueil_3.png);
+    background-position: right 0% bottom 0%;
+    background-size: 100%;
+}
+
+.color_white_troisieme_partie_accueil {
+    color: var(--white);
+}
+
+.height_modification_troisieme_partie {
+    margin-bottom: 50px;
+    display: flex;
+}
+
+.color_pnas_4eme_part {
+    color: var(--blue_btn);
+}
+
+.size_bold_h2_quatriemepart {
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+}
+
+.flex_quatrieme_part_pq_pnas {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 70px;
+}
+
+.title_pq_pnas {
+    font-size: 40px;
+}
+
+.delim_max_height_illustration_quatrieme_part {
+    height: 80px;
+}
+
+.responsive_image_illustration_quatrieme_part {
+    height: 100%;
+}
+
+.modification_txt_quatrieme_part {
+    font-size: 20px;
+    width: 350px;
+}
+
+
+/** FIN page accueil **/
+
+
+/** DEBUT page 404 **/
+
+.center_img_404 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/** FIN page 404 **/
+
+
+/** Début APP **/
+
+.dashboard_container {
+    display: flex;
+}
+
+.barre_alterale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: var(--gray);
+    width: 70px;
+}
+
+.logo_width_dashboard {
+    width: 40px;
+}
+
+.items_width_dashboard {
+    width: 35px;
+}
+
+.margin_top_logo_dashboard {
+    margin-top: 20px;
+}
+
+.margin_items_dashboard_left {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.barre_laterale_couleur {
+    height: 100vh;
+    width: 250px;
+    background: var(--blue_btn);
+}
+
+.h1_dashboard {
+    text-align: center;
+    color: var(--white);
+}
+
+.top_app {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--gray);
+    height: 50px;
+    width: 100%;
+}
+
+.max_width_top_app {
+    width: 100%;
+}
+
+.color_email_utilisateur {
+    color: var(--blue_btn);
+}
+
+.flex_elements_top_app {
+    display: flex;
+    margin-right: 20px;
+}
+
+.btn_deconnexion_dashboard {
+    cursor: pointer;
+    border: 1px solid var(--black);
+    background-color: var(--white);
+    border-radius: 7px;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.center_btn_deconnexion_dash {
+    display: flex;
+    align-items: center;
+}
+
+.espacement_elements_top_app {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/** Fin APP **/
